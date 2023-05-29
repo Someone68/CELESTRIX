@@ -55,12 +55,16 @@ body {
 
 #btn {
 	outline: none;
-	border: none;
+	border: 2px solid rgb(255, 0, 140);
 	cursor: pointer;
 	padding: 10px;
 	font-size: 200px;
 	color: white;
-	background: rgba(133, 77, 237, 0.197);
+	background: linear-gradient(
+		180deg,
+		rgba(133, 77, 237, 0.081),
+		rgba(193, 40, 124, 0.225)
+	);
 	transform: rotate(45deg);
 	width: 200px;
 	vertical-align: middle;
