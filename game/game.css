@@ -72,6 +72,8 @@ body {
 	height: 200px;
 	overflow: hidden;
 	position: relative;
+	transition-duration: 0.3s;
+	margin: 60px;
 }
 
 .btncontent {
@@ -82,4 +84,11 @@ body {
 	margin: 0;
 	padding: 0;
 	line-height: 200px;
+}
+
+#btn:hover {
+	-webkit-box-shadow: inset 5px 5px 10px 0px rgba(255, 18, 152, 1);
+	-moz-box-shadow: inset 5px 5px 10px 0px rgba(255, 18, 152, 1);
+	box-shadow: inset 5px 5px 10px 0px rgba(255, 18, 152, 1),
+		inset -5px -5px 10px 0px rgba(255, 18, 152, 1);
 }
