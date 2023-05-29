@@ -92,3 +92,16 @@ body {
 	box-shadow: inset 5px 5px 10px 0px rgba(255, 18, 152, 1),
 		inset -5px -5px 10px 0px rgba(255, 18, 152, 1);
 }
+.topnav {
+	overflow: hidden;
+	background-color: #333;
+}
+
+.topnav a {
+	float: left;
+	color: #f2f2f2;
+	text-align: center;
+	padding: 14px 16px;
+	text-decoration: none;
+	font-size: 17px;
+}
