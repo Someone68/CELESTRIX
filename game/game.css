@@ -105,3 +105,29 @@ body {
 	text-decoration: none;
 	font-size: 17px;
 }
+
+#leave {
+	position: fixed;
+	top: 10px;
+	left: 10px;
+	outline: none;
+	border: none;
+	font-size: 50px;
+	color: rgb(255, 0, 140);
+	background: transparent;
+	cursor: pointer;
+	line-height: 25px;
+	text-shadow: 2px 2px solid rgb(131, 0, 72);
+}
+#reset {
+	position: fixed;
+	left: 0;
+	bottom: 0px;
+	padding: 7px;
+	outline: none;
+	border: none;
+	font-size: 20px;
+	color: rgb(255, 0, 140);
+	background: rgba(0, 0, 0, 0.275);
+	cursor: pointer;
+}
