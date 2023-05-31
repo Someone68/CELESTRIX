@@ -2,11 +2,12 @@ let buttonElement = document.getElementById("btn");
 let stardustElement = document.getElementById("stardust");
 let stardust = 0;
 window.onload = () => {
-	SnackBar({ message: "Text" });
 	buttonElement.addEventListener("click", click);
 	if (localStorage.stardust) {
+		Snackbar.show({ actionText: "THANKS", text: "Welcome back to CELESTRIX!" });
 		updateDOM();
 	} else {
+		Snackbar.show({ actionText: "THANKS", text: "Welcome to CELESTRIX!" });
 		localStorage.stardust = 0;
 		updateDOM();
 	}
