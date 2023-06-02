@@ -1,4 +1,4 @@
-<!--HEY!!! IF YOU SEE THIS TEXT, INSTEAD PREVIEW THE MARKDOWN FILE IN THE GITHUB REPOSITORY-->
+<!--HEY!!! IF YOU SEE THIS TEXT, INSTEAD PREVIEW THE MARKDOWN FILE IN THE GITHUB REPOSITORY https://github.com/Someone68/CELESTRIX -->
 
 # THIS IS FOR DEVs!
 
@@ -8,4 +8,4 @@
 2. Run `git add .`
 3. Run `git commit -m update`
 4. Run `git push origin master`
-5. Wait about ten seconds and then check out (this website)[https://celestrix.netlify.app/]
+5. Wait about ten seconds and then check out [this website](https://celestrix.netlify.app/)
