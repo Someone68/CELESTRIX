@@ -21,6 +21,10 @@
 			type="text/css"
 			href="../SnackBar-master/dist/snackbar.min.css"
 		/>
+		<script
+			src="https://kit.fontawesome.com/1abfab8baa.js"
+			crossorigin="anonymous"
+		></script>
 	</head>
 	<body>
 		<button id="leave" onclick="location.href='../index.html'">&times;</button>
@@ -32,12 +36,29 @@
 				<h1 id="title">CELESTRIX</h1>
 			</div>
 			<h2 id="stardust" class="stardust">◈&#8201;0</h2>
-			<button id="btn">
+			<button id="btn" oncontextmenu="return false">
 				<div class="btncontent">
 					◈
 				</div>
 			</button>
 		</div>
+		<!-- Add a button to open/close the side navigation menu -->
+		<button class="menu-btn">
+			<i class="fa-sharp fa-solid fa-cart-shopping"></i>
+		</button>
+
+		<!-- Add the side navigation menu -->
+		<div class="sidenav">
+			<h2>Shop</h2>
+			<div class="shopsection" onclick="buy('cursorupgrade')">
+				<h3>Cursor Upgrade</h3>
+				<p>Increases Click Power by 1</p>
+				<h4 id="cursorupgrade" class="unbold">Costs 100 Stardust | 0 Owned</h4>
+			</div>
+		</div>
+
+		<!-- Add an overlay to cover the page content when the side navigation menu is shown -->
+		<div class="overlay hidden"></div>
 		<script src="game.js"></script>
 	</body>
 </html>

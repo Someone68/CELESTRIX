@@ -1,6 +1,6 @@
 let i = 0;
 let txt =
-	"A CLICKER GAME\nCLICK THE BUTTON TO GAIN ◈\nBUY UPGRADES WITH ◈"; /* The text */
+	"A CLICKER GAME\nCLICK THE BUTTON FOR STARDUST\nBUY UPGRADES"; /* The text */
 let speed = 50; /* The speed/duration of the effect in milliseconds */
 
 function typeWriter() {

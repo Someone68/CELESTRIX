@@ -54,6 +54,7 @@ body {
 }
 
 #btn {
+	user-select: none;
 	outline: none;
 	border: 2px solid rgb(255, 0, 140);
 	cursor: pointer;
@@ -130,4 +131,128 @@ body {
 	color: rgb(255, 0, 140);
 	background: rgba(0, 0, 0, 0.275);
 	cursor: pointer;
+}
+
+.swal-modal {
+	background: rgba(0, 0, 0, 0.75) !important;
+}
+
+.swal-title,
+.swal-text {
+	color: rgba(255, 255, 255, 0.882) !important;
+}
+
+/* Set the width of the side navigation menu */
+.sidenav {
+	height: 100%;
+	width: 0;
+	position: fixed;
+	z-index: 2;
+	top: 0;
+	right: 0;
+	background-color: #111111c4;
+	overflow-x: hidden;
+	transition: 0.5s;
+	word-wrap: none;
+	white-space: nowrap;
+}
+
+/* Style the links inside the menu */
+.sidenav a {
+	padding: 16px 8px 8px 32px;
+	text-decoration: none;
+	font-size: 25px;
+	color: #818181;
+	display: block;
+	transition: 0.3s;
+}
+
+/* Change the color of links on hover */
+.sidenav a:hover {
+	color: #f1f1f1;
+}
+
+/* Add a button to open/close the side navigation menu */
+.menu-btn {
+	font-size: 20px;
+	cursor: pointer;
+	background-color: #111111c4;
+	color: white;
+	padding: 10px 15px;
+	border: none;
+	position: fixed;
+	top: 0;
+	right: 0px;
+	z-index: 2;
+	/* Set the z-index to 3 */
+	transition: 0.5s;
+	transform: translateX(0);
+}
+
+/* Style the close button */
+.menu-btn.close {
+	transform: translateX(-349px) !important;
+}
+
+/* Change the background color of the button on hover */
+.menu-btn:hover {
+	background-color: #444444c4;
+}
+
+/* When the side navigation menu is shown, overlay a black background */
+.overlay {
+	height: 100%;
+	width: 100%;
+	position: fixed;
+	z-index: 1;
+	left: 0;
+	top: 0;
+	background-color: rgba(0, 0, 0, 0.5);
+	transition-duration: 0.5s;
+	visibility: visible;
+}
+
+/* When the side navigation menu is hidden, remove the overlay */
+.overlay.hidden {
+	visibility: hidden;
+}
+
+/* Add a class to the body element when the side navigation menu is shown */
+body.sidenav-open {
+	overflow: hidden;
+}
+
+/* Change the width of the side navigation menu to show/hide it */
+.sidenav-open .sidenav {
+	width: 350px;
+	padding: 10px;
+}
+
+/* Animate the open/close of the side navigation menu */
+.sidenav-open .menu-btn {
+	transform: translateX(250px);
+}
+
+.sidenav-open .overlay {
+	display: block;
+}
+
+.shopsection {
+	cursor: pointer;
+	padding: 5px;
+	border-top: 1px solid white;
+	border-bottom: 1px solid white;
+	user-select: none;
+}
+
+.shopsection:hover {
+	background: #1d1d1da5;
+}
+
+.shopsection:active {
+	background: rgba(77, 0, 42, 0.332);
+}
+
+.unbold {
+	font-weight: normal;
 }

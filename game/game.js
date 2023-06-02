@@ -1,31 +1,208 @@
 let buttonElement = document.getElementById("btn");
 let stardustElement = document.getElementById("stardust");
-let stardust = 0;
+let cp5sInterval;
+
+function gebid(id) {
+	return document.getElementById(id);
+}
 window.onload = () => {
 	buttonElement.addEventListener("click", click);
 	if (localStorage.stardust) {
-		Snackbar.show({ actionText: "THANKS", text: "Welcome back to CELESTRIX!" });
+		Snackbar.show({
+			actionText: "THANKS",
+			text: "Welcome back to CELESTRIX!",
+			duration: 1500,
+		});
 		updateDOM();
 	} else {
-		Snackbar.show({ actionText: "THANKS", text: "Welcome to CELESTRIX!" });
+		Snackbar.show({
+			actionText: "THANKS",
+			text: "Welcome to CELESTRIX!",
+			duration: 1500,
+		});
 		localStorage.stardust = 0;
 		updateDOM();
 	}
 	if (localStorage.clickPower) {
-		updateDOM;
+		updateDOM();
 	} else {
 		localStorage.clickPower = 1;
 	}
+	if (localStorage.cursorUpgradePrice) {
+		updateDOM();
+	} else {
+		localStorage.cursorUpgradePrice = 100;
+	}
+	if (localStorage.cp5s) {
+		cp5s = setInterval(() => {
+			add("stardust", "cp5s");
+			updateDOM();
+		}, 5000);
+		updateDOM();
+	} else {
+		localStorage.cp5s = 0;
+	}
 };
 
+function add(x, y = 1) {
+	if (localStorage[x]) {
+		if (localStorage[y]) {
+			localStorage[x] = Number(localStorage[x]) + Number(localStorage[y]);
+		} else {
+			localStorage[x] = Number(localStorage[x]) + y;
+		}
+	} else {
+		return x + y;
+	}
+}
+
+function uadd(x, y = 1) {
+	if (localStorage[x]) {
+		if (localStorage[y]) {
+			return Number(localStorage[x]) + Number(localStorage[y]);
+		} else {
+			return Number(localStorage[x]) + y;
+		}
+	} else {
+		return x + y;
+	}
+}
+
+function subtract(x, y = 1) {
+	if (localStorage[x]) {
+		if (localStorage[y]) {
+			localStorage[x] = Number(localStorage[x]) - Number(localStorage[y]);
+		} else {
+			localStorage[x] = Number(localStorage[x]) - y;
+		}
+	} else {
+		return x - y;
+	}
+}
+
+function usubtract(x, y = 1) {
+	if (localStorage[x]) {
+		if (localStorage[y]) {
+			return Number(localStorage[x]) - Number(localStorage[y]);
+		} else {
+			return Number(localStorage[x]) - y;
+		}
+	} else {
+		return x - y;
+	}
+}
+
+function multiply(x, y = 1) {
+	if (localStorage[x]) {
+		if (localStorage[y]) {
+			localStorage[x] = Number(localStorage[x]) * Number(localStorage[y]);
+		} else {
+			localStorage[x] = Number(localStorage[x]) * y;
+		}
+	} else {
+		return x * y;
+	}
+}
+
+function umultiply(x, y = 1) {
+	if (localStorage[x]) {
+		if (localStorage[y]) {
+			return Number(localStorage[x]) * Number(localStorage[y]);
+		} else {
+			return Number(localStorage[x]) * y;
+		}
+	} else {
+		return x * y;
+	}
+}
+
+function divide(x, y = 1) {
+	if (localStorage[x]) {
+		if (localStorage[y]) {
+			localStorage[x] = Number(localStorage[x]) / Number(localStorage[y]);
+		} else {
+			localStorage[x] = Number(localStorage[x]) / y;
+		}
+	} else {
+		return x / y;
+	}
+}
+
+function udivide(x, y = 1) {
+	if (localStorage[x]) {
+		if (localStorage[y]) {
+			return Number(localStorage[x]) / Number(localStorage[y]);
+		} else {
+			return Number(localStorage[x]) / y;
+		}
+	} else {
+		return x / y;
+	}
+}
+
+function lessThan(x, y) {
+	if (localStorage[x]) {
+		if (localStorage[y]) {
+			return Number(localStorage[x]) < Number(localStorage[y]);
+		} else {
+			return Number(localStorage[x]) < y;
+		}
+	} else {
+		return x < y;
+	}
+}
+
+function lessThanOrEqual(x, y) {
+	if (localStorage[x]) {
+		if (localStorage[y]) {
+			return Number(localStorage[x]) <= Number(localStorage[y]);
+		} else {
+			return Number(localStorage[x]) <= y;
+		}
+	} else {
+		return x <= y;
+	}
+}
+
+function greaterThan(x, y) {
+	if (localStorage[x]) {
+		if (localStorage[y]) {
+			return Number(localStorage[x]) > Number(localStorage[y]);
+		} else {
+			return Number(localStorage[x]) > y;
+		}
+	} else {
+		return x > y;
+	}
+}
+
+function greaterThanOrEqual(x, y) {
+	if (localStorage[x]) {
+		if (localStorage[y]) {
+			return Number(localStorage[x]) >= Number(localStorage[y]);
+		} else {
+			return Number(localStorage[x]) >= y;
+		}
+	} else {
+		return x >= y;
+	}
+}
+
 function click() {
-	localStorage.stardust =
-		Number(localStorage.stardust) + Number(localStorage.clickPower);
+	add("stardust", "clickPower");
 	updateDOM();
 }
 function updateDOM() {
 	stardustElement.innerHTML = "◈&#8201;" + localStorage.stardust;
+	gebid("cursorupgrade").innerHTML =
+		"Costs " +
+		localStorage.cursorUpgradePrice +
+		" Stardust | " +
+		usubtract("clickPower", 1) +
+		" Owned";
 }
+
+setInterval(updateDOM, 10);
 
 function reset() {
 	swal({
@@ -58,4 +235,58 @@ function reset() {
 			});
 		}
 	});
+}
+
+document.addEventListener("DOMContentLoaded", function () {
+	const menuBtn = document.querySelector(".menu-btn");
+	const sidenav = document.querySelector(".sidenav");
+	const overlay = document.querySelector(".overlay");
+
+	menuBtn.addEventListener("click", function () {
+		if (menuBtn.classList.contains("close")) {
+			menuBtn.classList.remove("close");
+			document.body.classList.remove("sidenav-open");
+		} else {
+			menuBtn.classList.add("close");
+			document.body.classList.add("sidenav-open");
+		}
+	});
+
+	overlay.addEventListener("click", function () {
+		menuBtn.classList.remove("close");
+		document.body.classList.remove("sidenav-open");
+	});
+});
+
+function random(min, max) {
+	return Math.floor(Math.random() * (max + 1)) + min;
+}
+
+// buy function
+function buy(item) {
+	switch (item) {
+		case "cursorupgrade":
+			if (greaterThanOrEqual("stardust", localStorage.cursorUpgradePrice)) {
+				localStorage.stardust -= localStorage.cursorUpgradePrice;
+				add("clickPower");
+				Snackbar.show({
+					actionText: "OK",
+					text: "Bought Cursor Upgrade",
+					duration: 2500,
+				});
+				//increase the price
+				localStorage.cursorUpgradePrice = Math.round(
+					umultiply("cursorUpgradePrice", Math.random() * 2.1 + 1.3)
+				);
+				updateDOM();
+			} else {
+				swal({
+					title: "Insufficient Stardust",
+					text: `Not enough Stardust! You need ${Math.abs(
+						usubtract("stardust", "cursorUpgradePrice")
+					)} more!`,
+					icon: "error",
+				});
+			}
+	}
 }
