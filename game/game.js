@@ -1,6 +1,6 @@
 let buttonElement = document.getElementById("btn");
 let stardustElement = document.getElementById("stardust");
-let cp5sInterval;
+let cp5s;
 let music = new Audio("https://dl.dropbox.com/s/r3sm76cwut56ta8/music.mp3");
 music.loop = true;
 music.volume = 0.7;
