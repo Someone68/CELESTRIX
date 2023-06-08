@@ -51,7 +51,7 @@ window.onload = () => {
 			localStorage.musicMuted.toLowerCase() == "false" ||
 			localStorage.musicMuted == false
 		) {
-			music.play();
+			if (documentClicked) music.play();
 		} else {
 			localStorage.musicMuted = false;
 			music.pause();
@@ -224,7 +224,6 @@ function updateDOM() {
 			localStorage.musicMuted.toLowerCase() == "false" ||
 			localStorage.musicMuted == false
 		) {
-			music.play();
 			if (documentClicked) music.play();
 		} else {
 			music.pause();
