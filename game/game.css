@@ -1,0 +1,271 @@
+@font-face {
+	font-family: pixelfont;
+	src: url("../pixelfont.ttf");
+}
+
+* {
+	padding: 0;
+	margin: 0;
+	box-sizing: border-box;
+	font-family: pixelfont;
+}
+
+html,
+body {
+	height: 100vh;
+	width: 100%;
+}
+
+body {
+	background: url("../celestrix.png"), #433544;
+	background-size: cover;
+	background-repeat: no-repeat;
+	background-position: center;
+	background-attachment: fixed;
+	color: white;
+}
+
+.main {
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	transform: translate(-50%, -50%);
+	text-align: center;
+}
+
+.logo {
+	width: 60px;
+	height: 60px;
+	margin-right: 10px;
+}
+
+.tl {
+	display: flex;
+	align-items: center;
+	text-align: center;
+}
+
+#title {
+	font-size: 50px;
+}
+
+#desc {
+	font-size: 18px;
+}
+
+#btn {
+	user-select: none;
+	outline: none;
+	border: 2px solid rgb(255, 0, 140);
+	cursor: pointer;
+	padding: 10px;
+	font-size: 200px;
+	color: white;
+	background: linear-gradient(
+		180deg,
+		rgba(133, 77, 237, 0.081),
+		rgba(193, 40, 124, 0.225)
+	);
+	transform: rotate(45deg);
+	width: 200px;
+	vertical-align: middle;
+	text-align: center;
+	height: 200px;
+	overflow: hidden;
+	position: relative;
+	transition-duration: 0.3s;
+	margin: 60px;
+}
+
+.btncontent {
+	position: absolute;
+	top: 53%;
+	left: 53%;
+	transform: translate(-50%, -50%) rotate(-45deg);
+	margin: 0;
+	padding: 0;
+	line-height: 200px;
+}
+
+#btn:hover {
+	-webkit-box-shadow: inset 5px 5px 10px 0px rgba(255, 18, 152, 1);
+	-moz-box-shadow: inset 5px 5px 10px 0px rgba(255, 18, 152, 1);
+	box-shadow: inset 5px 5px 10px 0px rgba(255, 18, 152, 1),
+		inset -5px -5px 10px 0px rgba(255, 18, 152, 1);
+}
+.topnav {
+	overflow: hidden;
+	background-color: #333;
+}
+
+.topnav a {
+	float: left;
+	color: #f2f2f2;
+	text-align: center;
+	padding: 14px 16px;
+	text-decoration: none;
+	font-size: 17px;
+}
+
+#leave {
+	position: fixed;
+	top: 10px;
+	left: 10px;
+	outline: none;
+	border: none;
+	font-size: 50px;
+	color: rgb(255, 0, 140);
+	background: transparent;
+	cursor: pointer;
+	line-height: 25px;
+	text-shadow: 2px 2px rgb(131, 0, 72);
+}
+
+#music {
+	position: fixed;
+	top: 15px;
+	left: 50px;
+	outline: none;
+	border: none;
+	font-size: 20px;
+	color: rgb(255, 0, 140);
+	background: transparent;
+	cursor: pointer;
+	text-shadow: 2px 2px rgb(131, 0, 72);
+}
+#reset {
+	position: fixed;
+	left: 0;
+	bottom: 0px;
+	padding: 7px;
+	outline: none;
+	border: none;
+	font-size: 20px;
+	color: rgb(255, 0, 140);
+	background: rgba(0, 0, 0, 0.275);
+	cursor: pointer;
+}
+
+.swal-modal {
+	background: rgba(0, 0, 0, 0.75) !important;
+}
+
+.swal-title,
+.swal-text {
+	color: rgba(255, 255, 255, 0.882) !important;
+}
+
+/* Set the width of the side navigation menu */
+.sidenav {
+	height: 100%;
+	width: 0;
+	position: fixed;
+	z-index: 2;
+	top: 0;
+	right: 0;
+	background-color: #111111c4;
+	overflow-x: hidden;
+	transition: 0.5s;
+	word-wrap: none;
+	white-space: nowrap;
+}
+
+/* Style the links inside the menu */
+.sidenav a {
+	padding: 16px 8px 8px 32px;
+	text-decoration: none;
+	font-size: 25px;
+	color: #818181;
+	display: block;
+	transition: 0.3s;
+}
+
+/* Change the color of links on hover */
+.sidenav a:hover {
+	color: #f1f1f1;
+}
+
+/* Add a button to open/close the side navigation menu */
+.menu-btn {
+	font-size: 20px;
+	cursor: pointer;
+	background-color: #111111c4;
+	color: white;
+	padding: 10px 15px;
+	border: none;
+	position: fixed;
+	top: 0;
+	right: 0px;
+	z-index: 2;
+	/* Set the z-index to 3 */
+	transition: 0.5s;
+	transform: translateX(0);
+}
+
+/* Style the close button */
+.menu-btn.close {
+	transform: translateX(-349px) !important;
+}
+
+/* Change the background color of the button on hover */
+.menu-btn:hover {
+	background-color: #444444c4;
+}
+
+/* When the side navigation menu is shown, overlay a black background */
+.overlay {
+	height: 100%;
+	width: 100%;
+	position: fixed;
+	z-index: 1;
+	left: 0;
+	top: 0;
+	background-color: rgba(0, 0, 0, 0.5);
+	transition-duration: 0.5s;
+	visibility: visible;
+}
+
+/* When the side navigation menu is hidden, remove the overlay */
+.overlay.hidden {
+	visibility: hidden;
+}
+
+/* Add a class to the body element when the side navigation menu is shown */
+body.sidenav-open {
+	overflow: hidden;
+}
+
+/* Change the width of the side navigation menu to show/hide it */
+.sidenav-open .sidenav {
+	width: 350px;
+	padding: 10px;
+}
+
+/* Animate the open/close of the side navigation menu */
+.sidenav-open .menu-btn {
+	transform: translateX(250px);
+}
+
+.sidenav-open .overlay {
+	display: block;
+}
+
+.shopsection {
+	cursor: pointer;
+	padding: 5px;
+	border-top: 1px solid white;
+	border-bottom: 1px solid white;
+	user-select: none;
+}
+
+.shopsection:hover {
+	background: #1d1d1da5;
+}
+
+.shopsection:active {
+	background: rgba(77, 0, 42, 0.332);
+}
+
+.unbold {
+	font-weight: normal;
+}
