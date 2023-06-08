@@ -219,14 +219,16 @@ function updateDOM() {
 		usubtract("clickPower", 1) +
 		" Owned";
 	//console.log(localStorage.musicMuted);
-	if (
-		localStorage.musicMuted.toLowerCase() == "false" ||
-		localStorage.musicMuted == false
-	) {
-		music.play();
-		if (documentClicked) music.play();
-	} else {
-		music.pause();
+	if (localStorage.musicMuted) {
+		if (
+			localStorage.musicMuted.toLowerCase() == "false" ||
+			localStorage.musicMuted == false
+		) {
+			music.play();
+			if (documentClicked) music.play();
+		} else {
+			music.pause();
+		}
 	}
 }
 
