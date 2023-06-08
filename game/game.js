@@ -60,6 +60,11 @@ window.onload = () => {
 		localStorage.musicMuted = false;
 		music.play();
 	}
+	if (localStorage.stardustGenerator1Price) {
+		updateDOM();
+	} else {
+		localStorage.stardustGenerator1Price = 110;
+	}
 };
 
 function add(x, y = 1) {
@@ -218,6 +223,12 @@ function updateDOM() {
 		" Stardust | " +
 		usubtract("clickPower", 1) +
 		" Owned";
+	gebid("stardustgenerator1").innerHTML =
+		"Costs " +
+		localStorage.stardustGenerator1Price +
+		" Stardust | " +
+		localStorage.cp5s +
+		" Owned";
 	//console.log(localStorage.musicMuted);
 	if (localStorage.musicMuted) {
 		if (
@@ -295,8 +306,8 @@ function random(min, max) {
 function buy(item) {
 	switch (item) {
 		case "cursorupgrade":
-			if (greaterThanOrEqual("stardust", localStorage.cursorUpgradePrice)) {
-				localStorage.stardust -= localStorage.cursorUpgradePrice;
+			if (greaterThanOrEqual("stardust", "cursorUpgradePrice")) {
+				subtract("stardust", "cursorUpgradePrice");
 				add("clickPower");
 				Snackbar.show({
 					actionText: "OK",
@@ -320,6 +331,34 @@ function buy(item) {
 					icon: "error",
 				});
 			}
+			break;
+		case "stardustgenerator1":
+			if (greaterThanOrEqual("stardust", "stardustGenerator1Price")) {
+				subtract("stardust", "stardustGenerator1Price");
+				add("cp5s");
+				Snackbar.show({
+					actionText: "OK",
+					text: "Bought Stardust Generator Tier I",
+					duration: 2500,
+				});
+				//increase the price
+				localStorage.stardustGenerator1Price = Math.round(
+					uadd(
+						"stardustGenerator1Price",
+						Number(localStorage.stardustGenerator1Price) * 0.7
+					)
+				);
+				updateDOM();
+			} else {
+				swal({
+					title: "Insufficient Stardust",
+					text: `Not enough Stardust! You need ${Math.abs(
+						usubtract("stardust", "stardustGenerator1Price")
+					)} more!`,
+					icon: "error",
+				});
+			}
+			break;
 	}
 }
 
