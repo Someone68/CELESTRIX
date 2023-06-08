@@ -211,6 +211,14 @@ function greaterThanOrEqual(x, y) {
 	}
 }
 
+function resetIntervals() {
+	clearInterval(cp5s);
+	cp5s = setInterval(() => {
+		add("stardust", "cp5s");
+		updateDOM();
+	}, 5000);
+}
+
 function click() {
 	add("stardust", "clickPower");
 	updateDOM();
@@ -336,6 +344,7 @@ function buy(item) {
 			if (greaterThanOrEqual("stardust", "stardustGenerator1Price")) {
 				subtract("stardust", "stardustGenerator1Price");
 				add("cp5s");
+				resetIntervals();
 				Snackbar.show({
 					actionText: "OK",
 					text: "Bought Stardust Generator Tier I",
