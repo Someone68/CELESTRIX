@@ -6,6 +6,8 @@
 		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
 		<title>CELESTRIX</title>
 		<link href="game.css" rel="stylesheet" />
+		<script src="https://cdn.jsdelivr.net/npm/kursor@0.0.14/dist/kursor.js"></script>
+		<link rel="stylesheet" href="https://unpkg.com/kursor/dist/kursor.css" />
 		<link
 			rel="shortcut icon"
 			href="../celestrix-favicon.png?v=2"
@@ -48,11 +50,19 @@
 		</div>
 		<!-- Add a button to open/close the side navigation menu -->
 		<button class="menu-btn">
-			<i class="fa-sharp fa-solid fa-cart-shopping"></i>
+			<i class="fa-solid fa-bars"></i>
 		</button>
 
 		<!-- Add the side navigation menu -->
 		<div class="sidenav">
+			<h1 style="text-align: center;">Menu</h1>
+			<hr />
+			<h2>Stats</h2>
+			<p>Stardust: <span id="stats_stardust">0</span></p>
+			<p>Click Power: <span id="stats_clickpower">0</span></p>
+			<p>Total Clicks: <span id="stats_clicks">0</span></p>
+
+			<hr />
 			<h2>Shop</h2>
 			<div class="shopsection" onclick="buy('cursorupgrade')">
 				<h3>Cursor Upgrade</h3>
@@ -71,5 +81,12 @@
 		<!-- Add an overlay to cover the page content when the side navigation menu is shown -->
 		<div class="overlay hidden"></div>
 		<script src="game.js"></script>
+		<script>
+			new kursor({
+				type: 3,
+				color: "#E80A57",
+				removeDefaultCursor: true,
+			});
+		</script>
 	</body>
 </html>

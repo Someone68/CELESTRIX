@@ -55,10 +55,10 @@ body {
 }
 
 #btn {
+	cursor: none;
 	user-select: none;
 	outline: none;
 	border: 2px solid rgb(255, 0, 140);
-	cursor: pointer;
 	padding: 10px;
 	font-size: 200px;
 	color: white;
@@ -117,7 +117,6 @@ body {
 	font-size: 50px;
 	color: rgb(255, 0, 140);
 	background: transparent;
-	cursor: pointer;
 	line-height: 25px;
 	text-shadow: 2px 2px rgb(131, 0, 72);
 }
@@ -131,7 +130,6 @@ body {
 	font-size: 20px;
 	color: rgb(255, 0, 140);
 	background: transparent;
-	cursor: pointer;
 	text-shadow: 2px 2px rgb(131, 0, 72);
 }
 #reset {
@@ -144,16 +142,27 @@ body {
 	font-size: 20px;
 	color: rgb(255, 0, 140);
 	background: rgba(0, 0, 0, 0.275);
-	cursor: pointer;
 }
 
 .swal-modal {
 	background: rgba(0, 0, 0, 0.75) !important;
+	cursor: auto !important;
 }
 
 .swal-title,
 .swal-text {
 	color: rgba(255, 255, 255, 0.882) !important;
+	cursor: auto !important;
+}
+
+.swal-icon,
+.swal-footer,
+.swal-button-container {
+	cursor: auto !important;
+}
+
+.swal-button {
+	cursor: pointer !important;
 }
 
 /* Set the width of the side navigation menu */
@@ -269,4 +278,20 @@ body.sidenav-open {
 
 .unbold {
 	font-weight: normal;
+}
+
+.kursor {
+	background: rgba(255, 0, 140, 0.458) !important;
+	border: none !important;
+}
+
+.kursorChild {
+	background: rgba(255, 31, 154, 0.73) !important;
+	border: none !important;
+	padding: 3px !important;
+}
+
+hr {
+	margin-top: 10px;
+	margin-bottom: 10px;
 }

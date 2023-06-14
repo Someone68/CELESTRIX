@@ -32,6 +32,11 @@ window.onload = () => {
 	} else {
 		localStorage.clickPower = 1;
 	}
+	if (localStorage.totalClicks) {
+		updateDOM();
+	} else {
+		localStorage.totalClicks = 0;
+	}
 	if (localStorage.cursorUpgradePrice) {
 		updateDOM();
 	} else {
@@ -52,9 +57,13 @@ window.onload = () => {
 			localStorage.musicMuted == false
 		) {
 			if (documentClicked) music.play();
+			document.getElementById("music").innerHTML =
+				"<i class='fa-solid fa-volume-high'></i>";
 		} else {
-			localStorage.musicMuted = false;
+			localStorage.musicMuted = true;
 			music.pause();
+			document.getElementById("music").innerHTML =
+				"<i class='fa-solid fa-volume-xmark'></i>";
 		}
 	} else {
 		localStorage.musicMuted = false;
@@ -221,6 +230,7 @@ function resetIntervals() {
 
 function click() {
 	add("stardust", "clickPower");
+	add("totalClicks");
 	updateDOM();
 }
 function updateDOM() {
@@ -237,6 +247,9 @@ function updateDOM() {
 		" Stardust | " +
 		localStorage.cp5s +
 		" Owned";
+	gebid("stats_stardust").innerHTML = localStorage.stardust;
+	gebid("stats_clicks").innerHTML = localStorage.totalClicks;
+	gebid("stats_clickpower").innerHTML = localStorage.clickPower;
 	//console.log(localStorage.musicMuted);
 	if (localStorage.musicMuted) {
 		if (
