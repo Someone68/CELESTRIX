@@ -164,9 +164,6 @@ function resetIntervals() {
 }
 
 function convertNumber(lcls) {
-	if (typeof lcls === "string") {
-		return Number(lcls).toLocaleString();
-	} else {
-		return lcls.toLocaleString();
-	}
+	return Number(lcls).toLocaleString();
+	0;
 }
