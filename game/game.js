@@ -1,15 +1,28 @@
 let buttonElement = document.getElementById("btn");
 let stardustElement = document.getElementById("stardust");
 let cp5s;
+let cp2s;
+let cp01s;
 let music = new Audio("https://dl.dropbox.com/s/r3sm76cwut56ta8/music.mp3");
 music.loop = true;
 music.volume = 0.7;
 let documentClicked = false;
+let startTime;
+let cpsClicks;
+let cps;
 
 function gebid(id) {
 	return document.getElementById(id);
 }
 window.onload = () => {
+	setInterval(function () {
+		var currentTime = new Date().getTime();
+		var elapsedTime = (currentTime - startTime) / 1000;
+		cps = cpsClicks / elapsedTime;
+
+		cpsClicks = 0;
+		startTime = currentTime;
+	}, 1000);
 	buttonElement.addEventListener("click", click);
 	if (localStorage.stardust) {
 		Snackbar.show({
@@ -44,12 +57,33 @@ window.onload = () => {
 	}
 	if (localStorage.cp5s) {
 		cp5s = setInterval(() => {
+			cpsClicks += Number(localStorage.cp5s);
 			add("stardust", "cp5s");
 			updateDOM();
 		}, 5000);
 		updateDOM();
 	} else {
 		localStorage.cp5s = 0;
+	}
+	if (localStorage.cp2s) {
+		cp2s = setInterval(() => {
+			cpsClicks += Number(localStorage.cp2s);
+			add("stardust", "cp2s");
+			updateDOM();
+		}, 2000);
+		updateDOM();
+	} else {
+		localStorage.cp2s = 0;
+	}
+	if (localStorage.cp01s) {
+		cp01s = setInterval(() => {
+			cpsClicks += Number(localStorage.cp01s);
+			add("stardust", umultiply("cp01s", 3));
+			updateDOM();
+		}, 100);
+		updateDOM();
+	} else {
+		localStorage.cp01s = 0;
 	}
 	if (localStorage.musicMuted) {
 		if (
@@ -74,187 +108,73 @@ window.onload = () => {
 	} else {
 		localStorage.stardustGenerator1Price = 110;
 	}
+	if (localStorage.autominer2Price) {
+		updateDOM();
+	} else {
+		localStorage.autominer2Price = 500;
+	}
+	if (localStorage.stardustExtractor3Price) {
+		updateDOM();
+	} else {
+		localStorage.stardustExtractor3Price = 5000;
+	}
+	if (localStorage.richFont) {
+		if (localStorage.richFont === "true") {
+			document.documentElement.style.setProperty("--font", "pixel_rich");
+		} else {
+			document.documentElement.style.setProperty("--font", "pixelfont");
+		}
+	} else {
+		localStorage.richFont = "false";
+	}
 };
 
-function add(x, y = 1) {
-	if (localStorage[x]) {
-		if (localStorage[y]) {
-			localStorage[x] = Number(localStorage[x]) + Number(localStorage[y]);
-		} else {
-			localStorage[x] = Number(localStorage[x]) + y;
-		}
-	} else {
-		return x + y;
-	}
-}
-
-function uadd(x, y = 1) {
-	if (localStorage[x]) {
-		if (localStorage[y]) {
-			return Number(localStorage[x]) + Number(localStorage[y]);
-		} else {
-			return Number(localStorage[x]) + y;
-		}
-	} else {
-		return x + y;
-	}
-}
-
-function subtract(x, y = 1) {
-	if (localStorage[x]) {
-		if (localStorage[y]) {
-			localStorage[x] = Number(localStorage[x]) - Number(localStorage[y]);
-		} else {
-			localStorage[x] = Number(localStorage[x]) - y;
-		}
-	} else {
-		return x - y;
-	}
-}
-
-function usubtract(x, y = 1) {
-	if (localStorage[x]) {
-		if (localStorage[y]) {
-			return Number(localStorage[x]) - Number(localStorage[y]);
-		} else {
-			return Number(localStorage[x]) - y;
-		}
-	} else {
-		return x - y;
-	}
-}
-
-function multiply(x, y = 1) {
-	if (localStorage[x]) {
-		if (localStorage[y]) {
-			localStorage[x] = Number(localStorage[x]) * Number(localStorage[y]);
-		} else {
-			localStorage[x] = Number(localStorage[x]) * y;
-		}
-	} else {
-		return x * y;
-	}
-}
-
-function umultiply(x, y = 1) {
-	if (localStorage[x]) {
-		if (localStorage[y]) {
-			return Number(localStorage[x]) * Number(localStorage[y]);
-		} else {
-			return Number(localStorage[x]) * y;
-		}
-	} else {
-		return x * y;
-	}
-}
-
-function divide(x, y = 1) {
-	if (localStorage[x]) {
-		if (localStorage[y]) {
-			localStorage[x] = Number(localStorage[x]) / Number(localStorage[y]);
-		} else {
-			localStorage[x] = Number(localStorage[x]) / y;
-		}
-	} else {
-		return x / y;
-	}
-}
-
-function udivide(x, y = 1) {
-	if (localStorage[x]) {
-		if (localStorage[y]) {
-			return Number(localStorage[x]) / Number(localStorage[y]);
-		} else {
-			return Number(localStorage[x]) / y;
-		}
-	} else {
-		return x / y;
-	}
-}
-
-function lessThan(x, y) {
-	if (localStorage[x]) {
-		if (localStorage[y]) {
-			return Number(localStorage[x]) < Number(localStorage[y]);
-		} else {
-			return Number(localStorage[x]) < y;
-		}
-	} else {
-		return x < y;
-	}
-}
-
-function lessThanOrEqual(x, y) {
-	if (localStorage[x]) {
-		if (localStorage[y]) {
-			return Number(localStorage[x]) <= Number(localStorage[y]);
-		} else {
-			return Number(localStorage[x]) <= y;
-		}
-	} else {
-		return x <= y;
-	}
-}
-
-function greaterThan(x, y) {
-	if (localStorage[x]) {
-		if (localStorage[y]) {
-			return Number(localStorage[x]) > Number(localStorage[y]);
-		} else {
-			return Number(localStorage[x]) > y;
-		}
-	} else {
-		return x > y;
-	}
-}
-
-function greaterThanOrEqual(x, y) {
-	if (localStorage[x]) {
-		if (localStorage[y]) {
-			return Number(localStorage[x]) >= Number(localStorage[y]);
-		} else {
-			return Number(localStorage[x]) >= y;
-		}
-	} else {
-		return x >= y;
-	}
-}
-
-function resetIntervals() {
-	clearInterval(cp5s);
-	cp5s = setInterval(() => {
-		add("stardust", "cp5s");
-		updateDOM();
-	}, 5000);
+function clickSound() {
+	let clickSound = new Audio("click.mp3");
+	clickSound.volume = 1;
+	clickSound.play();
 }
 
 function click() {
-	if (localStorage.musicMuted.toLowerCase === "false") {
-		let clickSound = new Audio("click.mp3");
-		clickSound.volume = 0.7;
-		clickSound.play();
+	cpsClicks++;
+	if (localStorage.musicMuted.toLowerCase() === "false") {
+		clickSound();
 	}
 	add("stardust", "clickPower");
 	add("totalClicks");
 	updateDOM();
 }
 function updateDOM() {
-	stardustElement.innerHTML = "◈&#8201;" + localStorage.stardust;
+	stardustElement.innerHTML = "◈&#8201;" + convertNumber(localStorage.stardust);
+	if (!isNaN(cps))
+		gebid("cps").innerHTML = "SPS: " + convertNumber(cps.toFixed(2));
 	gebid("cursorupgrade").innerHTML =
 		"Costs " +
-		localStorage.cursorUpgradePrice +
+		convertNumber(localStorage.cursorUpgradePrice) +
 		" Stardust | " +
-		usubtract("clickPower", 1) +
+		convertNumber(usubtract("clickPower", 1)) +
 		" Owned";
 	gebid("stardustgenerator1").innerHTML =
 		"Costs " +
-		localStorage.stardustGenerator1Price +
+		convertNumber(localStorage.stardustGenerator1Price) +
 		" Stardust | " +
-		localStorage.cp5s +
+		convertNumber(localStorage.cp5s) +
 		" Owned";
-	gebid("stats_stardust").innerHTML = localStorage.stardust;
-	gebid("stats_clicks").innerHTML = localStorage.totalClicks;
-	gebid("stats_clickpower").innerHTML = localStorage.clickPower;
+	gebid("autominer2").innerHTML =
+		"Costs " +
+		convertNumber(localStorage.autominer2Price) +
+		" Stardust | " +
+		convertNumber(localStorage.cp2s) +
+		" Owned";
+	gebid("stardustextractor3").innerHTML =
+		"Costs " +
+		convertNumber(localStorage.stardustExtractor3Price) +
+		" Stardust | " +
+		convertNumber(localStorage.cp01s) +
+		" Owned";
+	gebid("stats_stardust").innerHTML = convertNumber(localStorage.stardust);
+	gebid("stats_clicks").innerHTML = convertNumber(localStorage.totalClicks);
+	gebid("stats_clickpower").innerHTML = convertNumber(localStorage.clickPower);
 	//console.log(localStorage.musicMuted);
 	if (localStorage.musicMuted) {
 		if (
@@ -266,10 +186,20 @@ function updateDOM() {
 			music.pause();
 		}
 	}
+	if (localStorage.richFont) {
+		if (localStorage.richFont === "true") {
+			gebid("richfont").checked = true;
+			document.documentElement.style.setProperty("--font", "pixel_rich");
+		} else {
+			gebid("richfont").checked = false;
+			document.documentElement.style.setProperty("--font", "pixelfont");
+		}
+	} else {
+		localStorage.richFont = "false";
+	}
 }
 
-setInterval(updateDOM, 10);
-
+setInterval(updateDOM, 1);
 function reset() {
 	swal({
 		title: "Warning!",
@@ -351,8 +281,8 @@ function buy(item) {
 			} else {
 				swal({
 					title: "Insufficient Stardust",
-					text: `Not enough Stardust! You need ${Math.abs(
-						usubtract("stardust", "cursorUpgradePrice")
+					text: `Not enough Stardust! You need ${convertNumber(
+						Math.abs(usubtract("stardust", "cursorUpgradePrice"))
 					)} more!`,
 					icon: "error",
 				});
@@ -365,7 +295,7 @@ function buy(item) {
 				resetIntervals();
 				Snackbar.show({
 					actionText: "OK",
-					text: "Bought Stardust Generator Tier I",
+					text: "Bought Stardust Generator",
 					duration: 2500,
 				});
 				//increase the price
@@ -381,6 +311,59 @@ function buy(item) {
 					title: "Insufficient Stardust",
 					text: `Not enough Stardust! You need ${Math.abs(
 						usubtract("stardust", "stardustGenerator1Price")
+					)} more!`,
+					icon: "error",
+				});
+			}
+			break;
+		case "autominer2":
+			if (greaterThanOrEqual("stardust", "autominer2Price")) {
+				subtract("stardust", "autominer2Price");
+				add("cp2s");
+				resetIntervals();
+				Snackbar.show({
+					actionText: "OK",
+					text: "Bought Auto Miner",
+					duration: 2500,
+				});
+				//increase the price
+				localStorage.autominer2Price = Math.round(
+					uadd("autominer2Price", Number(localStorage.autominer2Price) * 0.7)
+				);
+				updateDOM();
+			} else {
+				swal({
+					title: "Insufficient Stardust",
+					text: `Not enough Stardust! You need ${Math.abs(
+						usubtract("stardust", "autominer2Price")
+					)} more!`,
+					icon: "error",
+				});
+			}
+			break;
+		case "stardustextractor3":
+			if (greaterThanOrEqual("stardust", "stardustExtractor3Price")) {
+				subtract("stardust", "stardustExtractor3Price");
+				add("cp01s");
+				resetIntervals();
+				Snackbar.show({
+					actionText: "OK",
+					text: "Bought Stardust Extractor",
+					duration: 2500,
+				});
+				//increase the price
+				localStorage.stardustExtractor3Price = Math.round(
+					uadd(
+						"stardustExtractor3Price",
+						Number(localStorage.stardustExtractor3Price) * 1.2
+					)
+				);
+				updateDOM();
+			} else {
+				swal({
+					title: "Insufficient Stardust",
+					text: `Not enough Stardust! You need ${Math.abs(
+						usubtract("stardust", "stardustExtractor3Price")
 					)} more!`,
 					icon: "error",
 				});
@@ -414,7 +397,6 @@ function runMusic() {
 		localStorage.musicMuted.toLowerCase() == "false" ||
 		localStorage.musicMuted == false
 	) {
-		music.play();
 		//console.log("musicplayed");
 		music.play();
 	} else {
@@ -424,3 +406,15 @@ function runMusic() {
 }
 
 music.addEventListener("oncanplaythrough", runMusic);
+
+function toggleRichFont() {
+	if (localStorage.richFont) {
+		if (localStorage.richFont === "true") {
+			localStorage.richFont = "false";
+		} else {
+			localStorage.richFont = "true";
+		}
+	} else {
+		localStorage.richFont = "false";
+	}
+}

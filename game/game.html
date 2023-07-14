@@ -28,9 +28,8 @@
 			crossorigin="anonymous"
 		></script>
 	</head>
-	<body>
+	<body oncontextmenu="return false">
 		<button id="leave" onclick="location.href='../index.html'">&times;</button>
-		<button id="reset" onclick="reset();">Reset</button>
 		<button id="music" onclick="toggleMusic();">
 			<i class="fa-solid fa-volume-high"></i>
 			<!--<i class="fa-solid fa-volume-xmark"></i>-->
@@ -42,6 +41,7 @@
 				<h1 id="title">CELESTRIX</h1>
 			</div>
 			<h2 id="stardust" class="stardust">◈&#8201;0</h2>
+			<h3 id="cps" class="cps unbold">SPS: 0.00</h3>
 			<button id="btn" oncontextmenu="return false">
 				<div class="btncontent">
 					◈
@@ -57,7 +57,12 @@
 		<div class="sidenav">
 			<h1 style="text-align: center;">Menu</h1>
 			<hr />
-			<h2>Stats</h2>
+			<h2>Settings</h2>
+			<input type="checkbox" id="richfont" oninput="toggleRichFont()" />
+			<label for="richfont">Rich Font</label><br />
+			<button onclick="reset()" id="reset">Reset Game</button>
+			<hr />
+			<h2>Statistics</h2>
 			<p>Stardust: <span id="stats_stardust">0</span></p>
 			<p>Click Power: <span id="stats_clickpower">0</span></p>
 			<p>Total Clicks: <span id="stats_clicks">0</span></p>
@@ -71,19 +76,32 @@
 			</div>
 			<div class="shopsection" onclick="buy('stardustgenerator1')">
 				<h3>Stardust Generator</h3>
-				<p>Mines one Stardust every 5 seconds<br />Tier I</p>
+				<p>Mines 1 Stardust every 5 seconds<br />Tier I</p>
 				<h4 id="stardustgenerator1" class="unbold">
 					Costs 110 Stardust | 0 Owned
+				</h4>
+			</div>
+			<div class="shopsection" onclick="buy('autominer2')">
+				<h3>Auto Miner</h3>
+				<p>Mines 1 Stardust every 2 seconds<br />Tier II</p>
+				<h4 id="autominer2" class="unbold">Costs 500 Stardust | 0 Owned</h4>
+			</div>
+			<div class="shopsection" onclick="buy('stardustextractor3')">
+				<h3>Stardust Extractor</h3>
+				<p>Mines 3 Stardust 10 times in a second.<br />Tier III</p>
+				<h4 id="stardustextractor3" class="unbold">
+					Costs 5000 Stardust | 0 Owned
 				</h4>
 			</div>
 		</div>
 
 		<!-- Add an overlay to cover the page content when the side navigation menu is shown -->
 		<div class="overlay hidden"></div>
+		<script src="utils.js"></script>
 		<script src="game.js"></script>
 		<script>
 			new kursor({
-				type: 3,
+				type: 1,
 				color: "#E80A57",
 				removeDefaultCursor: true,
 			});
