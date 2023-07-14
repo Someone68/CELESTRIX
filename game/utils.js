@@ -165,5 +165,4 @@ function resetIntervals() {
 
 function convertNumber(lcls) {
 	return Number(lcls).toLocaleString();
-	0;
 }
