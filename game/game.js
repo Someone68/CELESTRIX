@@ -229,6 +229,11 @@ function resetIntervals() {
 }
 
 function click() {
+	if (localStorage.musicMuted.toLowerCase === "false") {
+		let clickSound = new Audio("click.mp3");
+		clickSound.volume = 0.7;
+		clickSound.play();
+	}
 	add("stardust", "clickPower");
 	add("totalClicks");
 	updateDOM();
