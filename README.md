@@ -1,4 +1,4 @@
-# Welcome to CELESTRIX
+![CELESTRIX](./title.png)
 
 ## A clicker game
 
