@@ -1,4 +1,4 @@
-![CELESTRIX](./title.png)
+[![CELESTRIX](./title.png)](https://celestrix.netlify.app)
 
 ## A clicker game
 
