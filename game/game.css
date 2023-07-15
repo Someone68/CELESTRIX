@@ -8,6 +8,11 @@
 	src: url("../pixel_rich.ttf");
 }
 
+@font-face {
+	font-family: titlefont;
+	src: url("../titlefont.woff");
+}
+
 :root {
 	--font: pixelfont;
 }
@@ -57,6 +62,8 @@ body {
 
 #title {
 	font-size: 50px;
+	font-family: titlefont;
+	font-weight: lighter;
 }
 
 #desc {

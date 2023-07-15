@@ -418,3 +418,10 @@ function toggleRichFont() {
 		localStorage.richFont = "false";
 	}
 }
+
+console.log(
+	"%c[=== Hey there! Please don't cheat! ===]",
+	"background: red; color: white; font-size:18px;"
+);
+
+console.log("%c or should you?", "font-size:13x;");
